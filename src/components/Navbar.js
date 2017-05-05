@@ -1,20 +1,26 @@
 import React, {Component} from 'react'
 import {Navbar, Nav, NavItem, Glyphicon} from 'react-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap';
+import { Link } from 'react-router';
 
-class navbarInstance extends Component {
+export default class navbarInstance extends Component {
   render() {
     return (
     <Navbar collapseOnSelect>
       <Navbar.Header>
         <Navbar.Brand>
-          <Glyphicon glyph="play-circle"/>&nbsp;<a href="#">Mini-Tube</a>
+          <Glyphicon id='logo' glyph="play-circle"/>&nbsp;<a href="#">Mini-Tube</a>
         </Navbar.Brand>
         <Navbar.Toggle />
       </Navbar.Header>
       <Navbar.Collapse>
         <Nav>
-          <NavItem eventKey={1} href="#">My Playlists</NavItem>
-          <NavItem eventKey={2} href="#">Anotha Tab</NavItem>
+          <LinkContainer to='/playlists'>
+            <NavItem eventKey={1} href='/playlists'>My Playlists</NavItem>
+          </LinkContainer>
+          <LinkContainer to='/'>
+            <NavItem eventKey={2} href="/">Search Videos</NavItem>
+          </LinkContainer>
         </Nav>
         <Nav pullRight>
           <NavItem eventKey={1} href="#">Log-in</NavItem>
@@ -24,5 +30,3 @@ class navbarInstance extends Component {
     );
   }
 }
-
-export default navbarInstance

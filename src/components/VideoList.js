@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import Video from './Video'
 import {connect} from 'react-redux'
 
+
 class VideoList extends Component {
   render() {
     const videos = this.props.videos.map((video, index) => {
