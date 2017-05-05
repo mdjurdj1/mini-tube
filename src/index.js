@@ -8,8 +8,7 @@ import thunk from 'redux-thunk'
 import rootReducer from './reducers'
 import './index.css';
 
-import App from './App';
-import Test from './components/Test'
+import { WrapperApp as App } from './App';
 
 const store = createStore(
   rootReducer,
@@ -23,8 +22,7 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <div>
-        <Route exact path='/' component={App} />
-        <Route exact path='/hello' component={Test} />
+        <Route path='/' component={App} />
       </div>
     </Router>
   </Provider>,
