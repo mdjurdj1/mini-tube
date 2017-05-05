@@ -2,13 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware, compose } from 'redux'
-import { BrowserRouter as Router, Route, browserHistory, hashHistory } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, browserHistory, hashHistory } from 'react-router-dom';
 
 import thunk from 'redux-thunk'
 import rootReducer from './reducers'
 import './index.css';
 
-import { WrapperApp as App } from './App';
+import App from './App';
+import Home from './components/Home'
 
 const store = createStore(
   rootReducer,
@@ -20,11 +21,13 @@ const store = createStore(
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={browserHistory}>
-      <div>
-        <Route path='/' component={App} />
-      </div>
-    </Router>
+    <App store={store}>
+      <BrowserRouter history={browserHistory}>
+        <Switch>
+          <Route path='/' component={Home} />
+        </Switch>
+      </BrowserRouter>
+    </App>
   </Provider>,
   document.getElementById('root')
 );

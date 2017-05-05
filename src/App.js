@@ -1,9 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux'
-import Test from './components/Test'
 import Navbar from './components/Navbar'
 import VideoSearchForm from './components/VideoSearchForm'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import VideoList from './components/VideoList'
 import './App.css';
 
 const App = ({match}) => {
@@ -11,13 +9,9 @@ const App = ({match}) => {
       <div className="App">
         <Navbar />
         <VideoSearchForm />
-        <Route exact path='/hello' component={Test} />
+        <VideoList />
       </div>
     );
 }
 
-function mapStateToProps(state){
-  return { videos: state.videos }
-}
-
-export const WrapperApp = connect(mapStateToProps)(App);
+export default App;
