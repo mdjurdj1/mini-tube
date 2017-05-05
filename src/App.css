@@ -3,8 +3,18 @@
 }
 
 .VideoSearchForm {
-    text-align: center;
+  text-align: center;
 }
+
+.video_box {
+  padding: 1.5em;
+  text-align: center
+}
+
+#heart {
+  color: red
+}
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;

@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import { Button, Glyphicon } from 'react-bootstrap'
 import YouTube from 'react-youtube'
 
 export default class Video extends Component {
@@ -12,11 +13,14 @@ export default class Video extends Component {
       };
 
       return (
-        <YouTube
-          videoId={this.props.videoId}
-          opts={opts}
-          onReady={this._onReady}
-        />
+          <div className='video_box'>
+            <YouTube
+              videoId={this.props.videoId}
+              opts={opts}
+              onReady={this._onReady}
+            /> <br />
+            <Button className="add_to_playlist"><Glyphicon glyph="heart" id='heart'/>&nbsp;Add to a playlist! </Button>
+        </div>
       );
     }
 
