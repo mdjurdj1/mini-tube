@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 import { Form, FormControl, FormGroup, ControlLabel, Button, Glyphicon } from 'react-bootstrap'
+import * as actions from '../actions/videoActions'
 
 class VideoSearchForm extends Component {
   constructor(props) {
@@ -9,8 +12,9 @@ class VideoSearchForm extends Component {
     }
   }
 
-  handleClick() {
-    alert('You clicked me, teehee!')
+  handleClick(e) {
+    e.preventDefault()
+    this.props.actions.searchVids(`${this.state.input}`)
   }
 
   handleChange(e) {
@@ -24,7 +28,7 @@ class VideoSearchForm extends Component {
       <div className="VideoSearchForm">
         <Form inline>
           <FormGroup controlId="formInlineSearch">
-            <ControlLabel>Search</ControlLabel> {'   '}
+            <ControlLabel>Search</ControlLabel> &nbsp;
             <FormControl value={this.state.input} onChange={(e)=>this.handleChange(e)} type="text" placeholder="Hydraulic Press..."/>
             <Button onClick={(e)=>this.handleClick(e)}><Glyphicon glyph="search"/></Button>
           </FormGroup>
@@ -34,4 +38,8 @@ class VideoSearchForm extends Component {
   }
 }
 
-export default VideoSearchForm
+function mapDispatchToProps(dispatch) {
+  return { actions: bindActionCreators(actions, dispatch)}
+}
+
+export default connect(null, mapDispatchToProps)(VideoSearchForm)
